@@ -26,11 +26,7 @@
   padding: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 15px;
-<<<<<<< HEAD
   border: 2px solid #3498db; /* Added border */
-=======
-  border: 2px solid #3498db;
->>>>>>> dd4b7105483bcbb50709b4841f7399bb4ce789af
 }
 
 .input-label {
