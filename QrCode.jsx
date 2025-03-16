@@ -12,15 +12,11 @@ function QrCode() {
     setLoading(true); // Show loading while the QR code is being generated
     setError(""); // Clear any previous errors before generating new QR
     try {
-      const url = `https://api.qrserver.com/v1/create-qr-code/?size=${qrsize}x${qrsize}&data=${encodeURIComponent(
+      const url = `https://api.qrserer.com/v1/create-qr-code/?size=${qrsize}x${qrsize}&data=${encodeURIComponent(
         qrData
       )}`;
 
       const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error("Failed to fetch QR code. Please try again.");
-      }
-
       setImg(url);
     } catch (error) {
       setError(error.message); // Set the error message in the state
