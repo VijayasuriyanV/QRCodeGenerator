@@ -96,17 +96,18 @@ a {
 /* DARK THEME */
 
 @media (prefers-color-scheme: dark) {
-  html, body {
-    background-color: #121212 ; 
+  html,
+  body {
+    background-color: #121212;
     color: white;
   }
 
   .app-container {
-    background-color: #121212 ; 
+    background-color: #121212;
   }
 
   input[type="text"] {
-    background-color: #1e1e1e; 
+    background-color: #1e1e1e;
     color: white;
     border: 1px solid #4aa3df;
   }
