@@ -92,3 +92,26 @@ a {
   text-decoration: none;
   color: #344ddb;
 }
+
+/* DARK THEME */
+
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: #121212 ; 
+    color: white;
+  }
+
+  .app-container {
+    background-color: #121212 ; 
+  }
+
+  input[type="text"] {
+    background-color: #1e1e1e; 
+    color: white;
+    border: 1px solid #4aa3df;
+  }
+
+  input[type="text"]::placeholder {
+    color: #bbb;
+  }
+}
