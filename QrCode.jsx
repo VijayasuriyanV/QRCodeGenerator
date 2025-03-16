@@ -6,22 +6,35 @@ function QrCode() {
   const [loading, setLoading] = useState(false);
   const [qrData, setqrData] = useState("");
   const [qrsize, setqrSize] = useState("");
+  const [error, setError] = useState(""); // State to manage error messages
 
   async function generateQRCode() {
-    setLoading(true); //set loading to true while loading the p tag have to visible
+    setLoading(true); // Show loading while the QR code is being generated
+    setError(""); // Clear any previous errors before generating new QR
     try {
       const url = `https://api.qrserver.com/v1/create-qr-code/?size=${qrsize}x${qrsize}&data=${encodeURIComponent(
         qrData
       )}`;
+
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error("Failed to fetch QR code. Please try again.");
+      }
+
       setImg(url);
     } catch (error) {
-      console.error("Error generating in QR", error);
+      setError(error.message); // Set the error message in the state
     } finally {
-      setLoading(false);
+      setLoading(false); // Hide loading when the request is completed
     }
   }
 
   function qrDownloader() {
+    if (!img) {
+      setError("Please generate a QR code first!");
+      return;
+    }
+
     fetch(img)
       .then((response) => response.blob())
       .then((blob) => {
@@ -33,15 +46,23 @@ function QrCode() {
         document.body.removeChild(link);
       })
       .catch((error) => {
-        console.error("Error downloading QR", error);
+        setError("Error downloading QR code.");
       });
   }
 
   return (
     <div className="app-container">
-      <h1>QR Code Gererator</h1>
+      <h1>QR Code Generator</h1>
+
+      {/* Display the error message if there's an error */}
+      {error && <p className="error-message">{error}</p>}
+
+      {/* Display loading message */}
       {loading && <p>Please wait...</p>}
-      {img && <img src={img} alt="QR Code" className="qr-img" />}
+
+      {/* Display the generated QR code */}
+      {img && <img src={img} alt="QR Code" className="qr-img qr-border" />}
+
       <div>
         <label htmlFor="data-input" className="input-label">
           Data for QR code
@@ -54,11 +75,11 @@ function QrCode() {
           onChange={(e) => setqrData(e.target.value)}
         />
         <label htmlFor="size-input" className="input-label">
-          Image Size (e.g.. 150):
+          Image Size (e.g., 150):
         </label>
         <input
           type="text"
-          id="data-input"
+          id="size-input"
           placeholder="Enter Image size"
           value={qrsize}
           onChange={(e) => setqrSize(e.target.value)}
@@ -70,6 +91,7 @@ function QrCode() {
           Download QR Code
         </button>
       </div>
+
       <p>
         Designed By <a href="https://vijayasuriyan.netlify.app/">Vijaya Suriyan V</a>
       </p>

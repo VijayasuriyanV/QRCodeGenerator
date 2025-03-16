@@ -26,7 +26,8 @@
   padding: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 15px;
-  border: 2px solid #3498db; /* Added border */
+  border: 2px solid #3498db; /* Border will now only appear with the QR code */
+  border-radius: 8px;
 }
 
 .input-label {
@@ -91,6 +92,13 @@ p {
 a {
   text-decoration: none;
   color: #344ddb;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 15px;
 }
 
 /* DARK THEME */
