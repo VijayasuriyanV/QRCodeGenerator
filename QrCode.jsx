@@ -15,8 +15,6 @@ function QrCode() {
       const url = `https://api.qrserer.com/v1/create-qr-code/?size=${qrsize}x${qrsize}&data=${encodeURIComponent(
         qrData
       )}`;
-
-      const response = await fetch(url);
       setImg(url);
     } catch (error) {
       setError(error.message); // Set the error message in the state
