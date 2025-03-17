@@ -9,14 +9,20 @@ function QrCode() {
   const [error, setError] = useState(""); // State to manage error messages
 
   async function generateQRCode() {
+    if (!qrData) {
+      setError("Please Enter the data for QR code!");
+      return;
+    }
     setLoading(true); // Show loading while the QR code is being generated
     setError(""); // Clear any previous errors before generating new QR
+
     try {
       const url = `https://api.qrserver.com/v1/create-qr-code/?size=${qrsize}x${qrsize}&data=${encodeURIComponent(
         qrData
       )}`;
       setImg(url);
     } catch (error) {
+      console.log(error);
       setError(error.message); // Set the error message in the state
     } finally {
       setLoading(false); // Hide loading when the request is completed
@@ -32,6 +38,7 @@ function QrCode() {
     fetch(img)
       .then((response) => response.blob())
       .then((blob) => {
+        console.log(img);
         const link = document.createElement("a");
         link.href = URL.createObjectURL(blob);
         link.download = "QRCode.jpg";
