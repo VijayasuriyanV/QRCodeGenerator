@@ -93,9 +93,9 @@ function QrCode() {
       <p>
         Designed By <a href="https://vijayasuriyan.netlify.app/">Vijaya Suriyan V</a>
       </p>
-      <p>
+      {/* <p>
         <a href="https://github.com/VijayasuriyanV/QRCodeGenerator/">Source Code</a>
-      </p>
+      </p> */}
     </div>
   );
 }
