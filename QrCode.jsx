@@ -6,15 +6,15 @@ function QrCode() {
   const [loading, setLoading] = useState(false);
   const [qrData, setqrData] = useState("");
   const [qrsize, setqrSize] = useState("");
-  const [error, setError] = useState(""); // State to manage error messages
+  const [error, setError] = useState("");
 
   async function generateQRCode() {
     if (!qrData) {
       setError("Please Enter the data for QR code!");
       return;
     }
-    setLoading(true); // Show loading while the QR code is being generated
-    setError(""); // Clear any previous errors before generating new QR
+    setLoading(true);
+    setError("");
 
     try {
       const url = `https://api.qrserver.com/v1/create-qr-code/?size=${qrsize}x${qrsize}&data=${encodeURIComponent(
@@ -55,13 +55,10 @@ function QrCode() {
     <div className="app-container">
       <h1>QR Code Generator</h1>
 
-      {/* Display the error message if there's an error */}
       {error && <p className="error-message">{error}</p>}
 
-      {/* Display loading message */}
       {loading && <p>Please wait...</p>}
 
-      {/* Display the generated QR code */}
       {img && <img src={img} alt="QR Code" className="qr-img qr-border" />}
 
       <div>
