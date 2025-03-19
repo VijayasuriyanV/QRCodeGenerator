@@ -24,9 +24,9 @@ function QrCode() {
       setImg(url);
     } catch (error) {
       console.log(error);
-      setError(error.message); // Set the error message in the state
+      setError(error.message);
     } finally {
-      setLoading(false); // Hide loading when the request is completed
+      setLoading(false);
     }
   }
 
