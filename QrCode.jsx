@@ -21,10 +21,6 @@ function QrCode() {
         qrData
       )}`;
 
-      // const url = `https://api.qrserver.com/v1/create-qr-code/?size=${qrsize}x${qrsize}&data=${encodeURIComponent(
-      //   qrData
-      // )}&color=E42020&margin=10&bgcolor=000000`;
-
       setImg(url);
     } catch (error) {
       console.log(error);
