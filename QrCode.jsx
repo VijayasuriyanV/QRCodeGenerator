@@ -79,7 +79,7 @@ function QrCode() {
         <input
           type="text"
           id="size-input"
-          placeholder="Enter Image size"
+          placeholder="Enter Image size (Defaut size: 150px)"
           value={qrsize}
           onChange={(e) => setqrSize(e.target.value)}
         />
